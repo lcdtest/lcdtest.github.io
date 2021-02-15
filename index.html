@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test LCD</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #888;
+            transition: background-color 1s;
+        }
+
+        body>* {
+            margin: 0;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            const btn = document.querySelector("button");
+            btn.onclick = () => {
+                btn.style.display = "none";
+                document.body.style.cursor = "none";
+                document.documentElement.requestFullscreen();
+                running = true;
+            };
+
+            document.body.onclick = () => {
+                if (running) {
+                    switch (document.body.style.backgroundColor) {
+                        case "rgb(255, 255, 255)":
+                            document.body.style.backgroundColor = "rgb(255, 0, 0)";
+                            break;
+                        case "rgb(255, 0, 0)":
+                            document.body.style.backgroundColor = "rgb(0, 255, 0)";
+                            break;
+                        case "rgb(0, 255, 0)":
+                            document.body.style.backgroundColor = "rgb(0, 0, 255)";
+                            break;
+                        case "rgb(0, 0, 255)":
+                            document.body.style.backgroundColor = "rgb(0, 0, 0)";
+                            break;
+                        default:
+                            document.body.style.backgroundColor = "#fff";
+                            break;
+                    }
+                };
+            };
+        }
+    </script>
+</head>
+
+<body>
+    <button>Zacznij test</button>
+</body>
+
+</html>
